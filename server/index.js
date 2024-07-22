@@ -20,6 +20,7 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
+  // Event listener for user joining a room
   socket.on("join", ({ name, room }) => {
     socket.join(room);
 
@@ -31,9 +32,7 @@ io.on("connection", (socket) => {
       socket.emit("currentUser", { user });
     }
 
-    const userMessage = isExist
-      ? `You have joined the chat again`
-      : `You have joined the chat`;
+    const userMessage = isExist ? `You have joined the chat again` : `You have joined the chat`;
 
     socket.emit("message", {
       data: { user: { name: "Bot" }, message: userMessage },
@@ -48,6 +47,7 @@ io.on("connection", (socket) => {
     });
   });
 
+  // Event listener for sending a message
   socket.on("sendMessage", ({ message, params }) => {
     const user = findUser(params);
 
@@ -56,6 +56,7 @@ io.on("connection", (socket) => {
     }
   });
 
+  // Event listener for removing a user
   socket.on("removeUser", ({ name, room }) => {
     const admin = getAdmin(room);
     const user = removeUser({ name, room });
@@ -73,6 +74,7 @@ io.on("connection", (socket) => {
     }
   });
 
+  // Event listener for user leaving the room
   socket.on("leftRoom", ({ params }) => {
     const user = removeUser(params);
 
@@ -89,6 +91,7 @@ io.on("connection", (socket) => {
     }
   });
 
+  // Event listener for disconnecting
   io.on("disconnect", () => {
     console.log("Disconnect");
   });
