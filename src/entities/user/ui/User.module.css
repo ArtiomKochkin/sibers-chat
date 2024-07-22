@@ -10,4 +10,19 @@
 .close {
   font-size: 2rem;
   cursor: pointer;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+@media screen and (max-width: 500px) {
+  .user {
+    padding-left: 0;
+  }
 }

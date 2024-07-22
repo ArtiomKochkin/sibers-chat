@@ -17,3 +17,9 @@
 .button:focus {
   border: #ccc 1px solid;
 }
+
+@media screen and (max-width: 500px) {
+  .button {
+    padding: 0.5rem;
+  }
+}

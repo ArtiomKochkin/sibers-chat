@@ -21,6 +21,7 @@
   font-size: 1.4rem;
   margin-bottom: 1rem;
   color: #ccc;
+  text-align: center;
 }
 
 .form {
@@ -28,4 +29,16 @@
   flex-direction: column;
   gap: 1rem;
   width: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .homepage {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .homepage {
+    width: 95%;
+  }
 }

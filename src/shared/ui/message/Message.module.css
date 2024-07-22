@@ -20,3 +20,9 @@
   color: #ccc;
   margin-top: 0.5rem;
 }
+
+@media screen and (max-width: 500px) {
+  .message {
+    padding: 0.5rem;
+  }
+}

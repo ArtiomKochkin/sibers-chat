@@ -12,7 +12,7 @@ export const User = ({user, isAdmin, removeUser }) => {
           onClick={() => removeUser(user.name)}
           title="Remove user"
         >
-          <IoMdClose />
+          <IoMdClose className={styles.icon}/>
         </div>
       )}
     </li>

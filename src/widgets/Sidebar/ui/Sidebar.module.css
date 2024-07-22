@@ -12,13 +12,7 @@
 }
 
 .sidebar::-webkit-scrollbar {
-  width: 5px;
-  background-color: #212121;
-  height: 100%;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background-color: #2c384b;
+  display: none;
 }
 
 .sidebar li:not(:last-child) {
@@ -32,4 +26,10 @@
 
 .subtitle {
   font-size: 1.5rem;
+}
+
+@media screen and (max-width: 500px) {
+  .sidebar {
+    width: 34vw;
+  }
 }

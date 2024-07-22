@@ -4,13 +4,7 @@
 }
 
 .messages::-webkit-scrollbar {
-  width: 5px;
-  background-color: #212121;
-  height: 100%;
-}
-
-.messages::-webkit-scrollbar-thumb {
-  background-color: #2c384b;
+  display: none;
 }
 
 .me {
