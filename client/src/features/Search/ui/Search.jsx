@@ -1,7 +1,6 @@
 import { Input } from "@shared/ui";
 
 export const Search = ({ searchQuery, setSearchQuery }) => {
-
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };

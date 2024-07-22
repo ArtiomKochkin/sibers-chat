@@ -2,6 +2,7 @@ import { Message } from "@shared/ui";
 import styles from "./Messages.module.css";
 
 export const Messages = ({ messages, name }) => {
+  
   return (
     <div className={styles.messages}>
       {messages.map(({ user, message }, i) => {

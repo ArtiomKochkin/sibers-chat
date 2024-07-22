@@ -2,7 +2,7 @@ import { IoMdClose } from "react-icons/io";
 import styles from "./User.module.css";
 
 export const User = ({user, isAdmin, removeUser }) => {
-
+  
   return (
     <li className={styles.user}>
       <span> {user.name} </span>

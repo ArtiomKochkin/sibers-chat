@@ -7,9 +7,16 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+
+# Node modules and lock files
+client/node_modules
+client/package-lock.json
+server/node_modules
+server/package-lock.json
+
+# Build directories
+client/dist
+client/dist-ssr
 *.local
 
 # Editor directories and files
