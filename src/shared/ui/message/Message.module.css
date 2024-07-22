@@ -1,0 +1,22 @@
+.message {
+  border: #212121 1px solid;
+  box-shadow: #212121 0px 1px 10px;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 50vw;
+  margin: 1rem;
+  font-size: 1.3rem;
+}
+
+.name {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+
+.date {
+  font-size: 1rem;
+  text-align: right;
+  color: #ccc;
+  margin-top: 0.5rem;
+}

@@ -1,0 +1,18 @@
+.messages {
+  overflow-y: auto;
+  margin-bottom: 4rem;
+}
+
+.messages::-webkit-scrollbar {
+  width: 5px;
+  background-color: #212121;
+  height: 100%;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background-color: #2c384b;
+}
+
+.me {
+  margin: 1rem 1rem 1rem auto;
+}

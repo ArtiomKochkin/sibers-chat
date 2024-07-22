@@ -1,0 +1,26 @@
+.chat {
+  position: relative;
+  top: 10vh;
+  left: 25vw;
+  width: 73vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.header button {
+  width: 20vw;
+}
+
+.form {
+  margin: auto 0 0 0;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 73vw;
+  display: grid;
+  margin: 1rem;
+  grid-template-columns: 4fr 1fr;
+  gap: 1rem;
+}

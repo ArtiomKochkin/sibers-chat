@@ -1,0 +1,24 @@
+.input {
+  border: #212121 1px solid;
+  box-shadow: #212121 0px 1px 10px;
+  outline: none;
+  background-color: #31273b;
+  color: #ccc;
+  padding: 1rem 1.5rem;
+  transition: all linear 0.3s;
+  position: relative;
+  z-index: 100;
+  width: 100%;
+}
+
+.input:hover {
+  background-color: #212121;
+}
+
+.input::placeholder {
+  color: #ccc;
+}
+
+.input:focus {
+  border: #ccc 1px solid;
+}

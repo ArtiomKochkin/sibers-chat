@@ -1,0 +1,1 @@
+export { getNowDate } from "./getNowDate";

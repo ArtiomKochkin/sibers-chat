@@ -1,0 +1,13 @@
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  padding-left: 1rem;
+  margin: 0.5rem;
+}
+
+.close {
+  font-size: 2rem;
+  cursor: pointer;
+}
