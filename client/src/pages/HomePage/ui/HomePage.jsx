@@ -5,7 +5,7 @@ export const HomePage = () => {
   
   return (
     <div className={styles.homepage}>
-      <h2 className={styles.title}>Sibers chat</h2>
+      <h2 className={styles.title}>Online chat</h2>
       <p className={styles.subtitle}>
         Create your own chat for communication or connect to an existing one
       </p>
