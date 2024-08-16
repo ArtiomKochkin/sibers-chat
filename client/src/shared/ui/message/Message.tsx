@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
-import styles from "./Message.module.css";
 import { getNowDate } from "@shared/lib/utils";
+import styles from "./Message.module.css";
 
-export const Message = ({ message, styleMessage, name }) => {
+interface Props {
+  message: string,
+  name: string,
+  styleMessage: string
+}
+
+export const Message = ({ message, styleMessage, name }: Props) => {
   const [date, setDate] = useState("");
 
   useEffect(() => {

@@ -1,14 +1,24 @@
-import { Button, Input } from "@shared/ui";
 import { useState } from "react";
-import styles from "./ChatWindow.module.css";
-import { socket } from "@shared/api";
 import { Messages } from "@widgets/Messages";
+import { socket } from "@shared/api";
+import { Input, Button } from "@shared/ui";
+import { IMessage, IParams } from "@shared/types";
+import styles from "./ChatWindow.module.css";
 
-export const ChatWindow = ({ params, state}) => {
+interface Props {
+  params: IParams,
+  state: IMessage[]
+}
+
+export const ChatWindow = ({ params, state}: Props) => {
   const [message, setMessage] = useState("");
-  const handleChange = ({ target: { value } }) => setMessage(value);
 
-  const handleSubmit = (e) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setMessage(value);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!message) return;

@@ -1,21 +1,28 @@
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ChatWindow } from "@widgets/ChatWindow";
 import { Header } from "@widgets/Header";
 import { Sidebar } from "@widgets/Sidebar";
-import { useEffect, useState } from "react";
 import { socket } from "@shared/api";
-import { useLocation, useNavigate } from "react-router-dom";
+import { IMessage, IParams, IUser } from "@shared/types";
+
+const initialParams = {
+  room: "", 
+  name: "" 
+};
 
 export const ChatPage = () => {
   const { search } = useLocation();
   const navigate = useNavigate();
-  const [params, setParams] = useState({ room: "", user: "" });
-  const [state, setState] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [currentUser, setCurrentUser] = useState(null); 
+
+  const [params, setParams] = useState<IParams>(initialParams);
+  const [state, setState] = useState<IMessage[]>([]);
+  const [users, setUsers] = useState<IUser[]>([]);
+  const [currentUser, setCurrentUser] = useState<IUser | null>(null); 
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const searchParams = Object.fromEntries(new URLSearchParams(search));
+    const searchParams = Object.fromEntries(new URLSearchParams(search)) as unknown as IParams;
     setParams(searchParams);
     socket.emit("join", searchParams);
   }, [search]);
@@ -51,7 +58,7 @@ export const ChatPage = () => {
     navigate("/");
   };
 
-  const removeUser = (name) => {
+  const removeUser = (name: string) => {
     if (isAdmin) {
       socket.emit("removeUser", { name, room: params.room });
     }
@@ -60,7 +67,7 @@ export const ChatPage = () => {
   return (
     <div>
       <Header name={params.name} leftRoom={leftRoom}/>
-      <ChatWindow params={params} state={state} users={users}/>
+      <ChatWindow params={params} state={state}/>
       <Sidebar room={params.room} users={users} isAdmin={isAdmin} removeUser={removeUser}/>
     </div>
   );

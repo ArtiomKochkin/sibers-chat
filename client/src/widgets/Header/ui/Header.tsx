@@ -1,7 +1,12 @@
-import styles from "./Header.module.css";
 import { Button } from "@shared/ui";
+import styles from "./Header.module.css";
 
-export const Header = ({ name, leftRoom }) => {
+interface Props {
+  name: string,
+  leftRoom: () => void
+}
+
+export const Header = ({ name, leftRoom }: Props) => {
 
   return (
     <header className={styles.header}>

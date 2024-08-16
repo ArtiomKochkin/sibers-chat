@@ -1,0 +1,1 @@
+export type { IUser, IMessage, IParams } from './types';

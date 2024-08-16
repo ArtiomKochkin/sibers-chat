@@ -1,10 +1,18 @@
-import { User } from "@entities/user";
-import styles from "./Sidebar.module.css";
-import { Search } from "@features/Search";
 import { useState } from "react";
+import { Search } from "@features/Search";
+import { User } from "@entities/user";
+import { IUser } from "@shared/types";
+import styles from "./Sidebar.module.css";
 
-export const Sidebar = ({ room, users, isAdmin, removeUser }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+interface Props {
+  room: string,
+  users: IUser[],
+  isAdmin: boolean,
+  removeUser: (name: string) => void
+}
+
+export const Sidebar = ({ room, users, isAdmin, removeUser }: Props) => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(searchQuery.toLowerCase())

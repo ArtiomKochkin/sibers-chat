@@ -1,4 +1,4 @@
-import { JoinForm } from '@features/JoinForm';
+import { JoinForm } from "@features/JoinForm";
 import styles from './HomePage.module.css';
 
 export const HomePage = () => {

@@ -1,7 +1,13 @@
 import { Message } from "@shared/ui";
+import { IMessage } from "@shared/types";
 import styles from "./Messages.module.css";
 
-export const Messages = ({ messages, name }) => {
+interface Props {
+  messages: IMessage[],
+  name: string
+}
+
+export const Messages = ({ messages, name }: Props) => {
   
   return (
     <div className={styles.messages}>

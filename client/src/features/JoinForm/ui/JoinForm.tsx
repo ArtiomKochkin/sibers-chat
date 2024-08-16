@@ -1,7 +1,7 @@
-import { Button, Input } from '@shared/ui';
-import styles from './JoinForm.module.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Input, Button } from '@shared/ui';
+import styles from './JoinForm.module.css';
 
 const FIELDS = {
   NAME: "name",
@@ -12,11 +12,15 @@ export const JoinForm = () => {
   const { NAME, ROOM } = FIELDS;
   const [values, setValues] = useState({ [NAME]: "", [ROOM]: "" });
 
-  const handleChange = ({ target: { value, name } }) => {
-    setValues(prevValues => ({ ...prevValues, [name]: value }));
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {value, name} = event.target
+    setValues(prevValues => ({ 
+      ...prevValues, 
+      [name]: value 
+    }));
   };
 
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent) => {
     const isDisabled = Object.values(values).some((v) => !v);
 
     if (isDisabled) e.preventDefault();
