@@ -3,7 +3,7 @@ import { Messages } from "@widgets/Messages";
 import { socket } from "@shared/api";
 import { Input, Button } from "@shared/ui";
 import { IMessage, IParams } from "@shared/types";
-import styles from "./ChatWindow.module.css";
+import styles from "./ChatWindow.module.scss";
 
 interface Props {
   params: IParams,

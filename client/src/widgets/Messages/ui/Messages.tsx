@@ -1,6 +1,6 @@
 import { Message } from "@shared/ui";
 import { IMessage } from "@shared/types";
-import styles from "./Messages.module.css";
+import styles from "./Messages.module.scss";
 
 interface Props {
   messages: IMessage[],

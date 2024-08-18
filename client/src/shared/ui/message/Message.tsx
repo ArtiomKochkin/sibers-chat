@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getNowDate } from "@shared/lib/utils";
-import styles from "./Message.module.css";
+import styles from "./Message.module.scss";
 
 interface Props {
   message: string,

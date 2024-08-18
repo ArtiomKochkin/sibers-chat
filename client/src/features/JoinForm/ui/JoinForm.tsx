@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Input, Button } from '@shared/ui';
-import styles from './JoinForm.module.css';
+import styles from './JoinForm.module.scss';
 
 const FIELDS = {
   NAME: "name",

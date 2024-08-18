@@ -1,6 +1,6 @@
 import { IoMdClose } from "react-icons/io";
 import { IUser } from "@shared/types";
-import styles from "./User.module.css";
+import styles from "./User.module.scss";
 
 interface Props {
   user: IUser,

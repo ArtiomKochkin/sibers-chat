@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Search } from "@features/Search";
 import { User } from "@entities/user";
 import { IUser } from "@shared/types";
-import styles from "./Sidebar.module.css";
+import styles from "./Sidebar.module.scss";
 
 interface Props {
   room: string,
