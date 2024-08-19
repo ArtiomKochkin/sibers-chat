@@ -21,4 +21,9 @@ export default defineConfig({
       ]
     })
   ],
+  resolve: {
+    alias: {
+      '@styles': path.resolve(__dirname, 'src/app/styles'),
+    },
+  },
 })

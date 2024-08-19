@@ -1,3 +1,6 @@
+@import "@styles/vars";
+@import "@styles/mixins";
+
 .chat {
   position: relative;
   top: 10vh;
@@ -7,6 +10,11 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
+
+  @include bpMax($mobile) {
+    left: 34vw;
+    width: 65vw;
+  }
 }
 
 .form {
@@ -19,15 +27,8 @@
   margin: 1rem;
   grid-template-columns: 4fr 1fr;
   gap: 1rem;
-}
 
-@media screen and (max-width: 500px) {
-  .chat {
-    left: 34vw;
-    width: 65vw;
-  }
-
-  .form {
+  @include bpMax($mobile) {
     width: 62vw;
   }
 }

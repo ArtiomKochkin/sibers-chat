@@ -1,3 +1,6 @@
+@import "@styles/vars";
+@import "@styles/mixins";
+
 .homepage {
   display: flex;
   justify-content: center;
@@ -7,31 +10,27 @@
   padding: 2rem;
   border-radius: 10px;
   flex-direction: column;
-  box-shadow: #212121 0px 1px 10px;
-  border: #212121 1px solid;
+  box-shadow: $dark 0px 1px 10px;
+  border: $dark 1px solid;
+
+  @include bpMax($tablet) {
+    width: 80%;
+  }
+
+  @include bpMax($tablet-pt) {
+    width: 95%;
+  }
 }
 
 .title {
   font-size: 2rem;
   margin-bottom: 2rem;
-  text-shadow: #fff 1px 1px 10px;
+  text-shadow: $white 1px 1px 10px;
 }
 
 .subtitle {
   font-size: 1.4rem;
   margin-bottom: 1rem;
-  color: #ccc;
+  color: $gray;
   text-align: center;
-}
-
-@media screen and (max-width: 991px) {
-  .homepage {
-    width: 80%;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .homepage {
-    width: 95%;
-  }
 }

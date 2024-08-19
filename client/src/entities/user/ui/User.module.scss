@@ -1,3 +1,6 @@
+@import "@styles/vars";
+@import "@styles/mixins";
+
 .user {
   display: flex;
   align-items: center;
@@ -5,6 +8,10 @@
   font-size: 1.4rem;
   padding-left: 1rem;
   margin: 0.5rem;
+
+  @include bpMax($mobile) {
+    padding-left: 0;
+  }
 }
 
 .close {
@@ -18,11 +25,4 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-}
-
-
-@media screen and (max-width: 500px) {
-  .user {
-    padding-left: 0;
-  }
 }

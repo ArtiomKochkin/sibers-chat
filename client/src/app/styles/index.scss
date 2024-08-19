@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import "vars";
+@import "mixins";
 
 * {
   box-sizing: border-box;
@@ -8,12 +10,20 @@
 
 html {
   font-size: 10px;
+
+  @include bpMaxMin($desktop, $laptop) {
+    font-size: 15px;
+  }
+
+  @include bpMax($tablet) {
+    font-size: 9px;
+  }
 }
 
 body {
   font-family: "Nunito Sans", sans-serif;
-  background-color: #31273b;
-  color: #fff;
+  background-color: $primary;
+  color: $white;
   font-weight: 400;
   font-style: normal;
   height: 100vh;
@@ -22,16 +32,4 @@ body {
 
 li {
   display: block;
-}
-
-@media screen and (max-width: 2560px) and (min-width: 1440px) {
-  html {
-    font-size: 15px;
-  }
-}
-
-@media screen and (max-width: 991px) {
-  html {
-    font-size: 9px;
-  }
 }

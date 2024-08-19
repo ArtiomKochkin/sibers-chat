@@ -1,25 +1,26 @@
+@import "@styles/vars";
+@import "@styles/mixins";
+
 .button {
-  border: #212121 1px solid;
-  box-shadow: #212121 0px 1px 10px;
+  border: $dark 1px solid;
+  box-shadow: $dark 0px 1px 10px;
   outline: none;
-  background-color: #31273b;
-  color: #ccc;
+  background-color: $primary;
+  color: $gray;
   padding: 1rem 1.5rem;
   cursor: pointer;
   transition: all linear 0.3s;
   width: 100%;
-}
 
-.button:hover {
-  background-color: #212121;
-}
+  &:hover {
+    background-color: $dark;
+  }
 
-.button:focus {
-  border: #ccc 1px solid;
-}
+  &:focus {
+    border: $gray 1px solid;
+  }
 
-@media screen and (max-width: 500px) {
-  .button {
+  @include bpMax($mobile) {
     padding: 0.5rem;
   }
 }

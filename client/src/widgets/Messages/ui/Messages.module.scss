@@ -1,10 +1,10 @@
 .messages {
   overflow-y: auto;
   margin-bottom: 4rem;
-}
 
-.messages::-webkit-scrollbar {
-  display: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .me {
