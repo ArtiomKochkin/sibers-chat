@@ -13,6 +13,7 @@ export const Search = ({ searchQuery, setSearchQuery }: Props) => {
   return (
     <Input 
       placeholder="Search users"
+      isRect={true}
       value={searchQuery}
       onChange={handleSearchChange}
     />

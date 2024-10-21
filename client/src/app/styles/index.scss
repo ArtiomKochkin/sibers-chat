@@ -33,3 +33,8 @@ body {
 li {
   display: block;
 }
+
+a:focus-visible {
+  outline: $gray 2px solid;
+  border-radius: 10px;
+}

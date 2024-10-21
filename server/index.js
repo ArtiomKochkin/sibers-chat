@@ -35,15 +35,24 @@ io.on("connection", (socket) => {
     const userMessage = isExist ? `You have joined the chat again` : `You have joined the chat`;
 
     socket.emit("message", {
-      data: { user: { name: "Bot" }, message: userMessage },
+      data: { 
+        user: { name: "Bot" }, 
+        message: userMessage
+      },
     });
 
     socket.broadcast.to(user.room).emit("message", {
-      data: { user: { name: "Bot" }, message: `${user.name} has joined` },
+      data: { 
+        user: { name: "Bot" }, 
+        message: `${user.name} has joined` 
+      },
     });
 
     io.to(user.room).emit("room", {
-      data: { users: getRoomUsers(user.room), admin: getAdmin(user.room) },
+      data: { 
+        users: getRoomUsers(user.room), 
+        admin: getAdmin(user.room) 
+      },
     });
   });
 
@@ -52,7 +61,9 @@ io.on("connection", (socket) => {
     const user = findUser(params);
 
     if (user) {
-      io.to(user.room).emit("message", { data: { user, message } });
+      io.to(user.room).emit("message", { 
+        data: { user, message } 
+      });
     }
   });
 
@@ -63,11 +74,17 @@ io.on("connection", (socket) => {
 
     if (user && admin) {
       io.to(room).emit("message", {
-        data: { user: { name: "Bot" }, message: `${name} has been removed by admin` },
+        data: { 
+          user: { name: "Bot" }, 
+          message: `${name} has been removed by admin` 
+        },
       });
 
       io.to(room).emit("room", {
-        data: { users: getRoomUsers(room), admin },
+        data: { 
+          users: getRoomUsers(room),
+          admin 
+        },
       });
 
       io.to(room).emit("userRemoved", { name });
@@ -82,11 +99,17 @@ io.on("connection", (socket) => {
       const { room, name } = user;
 
       io.to(room).emit("message", {
-        data: { user: { name: "Bot" }, message: `${name} has left` },
+        data: { 
+          user: { name: "Bot" }, 
+          message: `${name} has left` 
+        },
       });
 
       io.to(room).emit("room", {
-        data: { users: getRoomUsers(room), admin: getAdmin(room) },
+        data: { 
+          users: getRoomUsers(room), 
+          admin: getAdmin(room) 
+        },
       });
     }
   });

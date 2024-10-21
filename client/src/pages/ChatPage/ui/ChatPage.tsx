@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ChatWindow } from "@widgets/ChatWindow";
 import { Header } from "@widgets/Header";
@@ -21,6 +21,26 @@ export const ChatPage = () => {
   const [currentUser, setCurrentUser] = useState<IUser | null>(null); 
   const [isAdmin, setIsAdmin] = useState(false);
 
+  const [isOpenSidebar, setIsOpenSidebar] = useState(true);
+  const toggleVisibilitySidebar = () => setIsOpenSidebar(prev => !prev);
+
+  const leftRoom = () => {
+    socket.emit("leftRoom", { params });
+    navigate("/");
+  };
+
+  const removeUser = (name: string) => {
+    if (isAdmin) {
+      socket.emit("removeUser", { name, room: params.room });
+    }
+  };
+
+  useLayoutEffect(() => {
+    if (window.innerWidth < 768) {
+      setIsOpenSidebar(false);
+    }
+  }, [window.innerWidth]);
+
   useEffect(() => {
     const searchParams = Object.fromEntries(new URLSearchParams(search)) as unknown as IParams;
     setParams(searchParams);
@@ -37,12 +57,16 @@ export const ChatPage = () => {
     socket.on("room", ({ data: { users } }) => {
       setUsers(users);
     });
+  }, []);
 
+  useEffect(() => {
     socket.on("currentUser", ({ user }) => {
       setCurrentUser(user);
       setIsAdmin(user.isAdmin);
     });
+  }, []);
 
+  useEffect(() => {
     socket.on("userRemoved", ({ name }) => {
       if (currentUser && currentUser.name === name) {
         navigate("/");
@@ -50,25 +74,27 @@ export const ChatPage = () => {
         setUsers((_users) => _users.filter(user => user.name !== name));
       }
     });
-
-  }, [currentUser, navigate]);
-
-  const leftRoom = () => {
-    socket.emit("leftRoom", { params });
-    navigate("/");
-  };
-
-  const removeUser = (name: string) => {
-    if (isAdmin) {
-      socket.emit("removeUser", { name, room: params.room });
-    }
-  };
+  }, []);
 
   return (
     <div>
-      <Header name={params.name} leftRoom={leftRoom}/>
-      <ChatWindow params={params} state={state}/>
-      <Sidebar room={params.room} users={users} isAdmin={isAdmin} removeUser={removeUser}/>
+      <Header 
+        name={params.name} 
+        leftRoom={leftRoom}
+        toggleVisibility={toggleVisibilitySidebar}
+      />
+      <ChatWindow 
+        params={params} 
+        state={state}
+        isOpenSidebar={isOpenSidebar}
+      />
+      <Sidebar 
+        room={params.room} 
+        users={users} 
+        isAdmin={isAdmin} 
+        isOpen={isOpenSidebar}
+        removeUser={removeUser}
+      />
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import { Spinner } from "@shared/ui";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -10,7 +11,7 @@ const ChatPage = lazy(() =>
 
 export const Router = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Spinner/>}>
       <BrowserRouter>
         <Routes>
           <Route path="/chat" element={<ChatPage/>}/>

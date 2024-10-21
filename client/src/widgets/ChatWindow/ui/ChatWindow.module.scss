@@ -11,6 +11,11 @@
   flex-direction: column;
   padding: 1rem;
 
+  &.full {
+    left: 0;
+    width: 100vw;
+  }
+
   @include bpMax($mobile) {
     left: 34vw;
     width: 65vw;
@@ -24,9 +29,14 @@
   right: 0;
   width: 73vw;
   display: grid;
-  margin: 1rem;
+  padding: 1rem;
   grid-template-columns: 4fr 1fr;
   gap: 1rem;
+
+  &.full {
+    left: 0;
+    width: 100vw;
+  }
 
   @include bpMax($mobile) {
     width: 62vw;

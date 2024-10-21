@@ -3,7 +3,7 @@
 .input {
   border: $dark 1px solid;
   box-shadow: $dark 0px 1px 10px;
-  outline: none;
+  outline: transparent 2px solid;
   background-color: $primary;
   color: $gray;
   padding: 1rem 1.5rem;
@@ -11,13 +11,18 @@
   position: relative;
   z-index: 100;
   width: 100%;
+  border-radius: 10px;
+
+  &.rect {
+    border-radius: 0;
+  }
 
   &:hover {
     background-color: $dark;
   }
 
   &:focus {
-    border: $gray 1px solid;
+    outline: $gray 2px solid;
   }
 
   &::placeholder {

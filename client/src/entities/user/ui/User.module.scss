@@ -6,12 +6,18 @@
   align-items: center;
   justify-content: space-between;
   font-size: 1.4rem;
-  padding-left: 1rem;
   margin: 0.5rem;
 
   @include bpMax($mobile) {
     padding-left: 0;
   }
+}
+
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .close {
@@ -20,9 +26,13 @@
   position: relative;
 }
 
-.icon {
+.remove {
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.person {
+  font-size: 3rem;
 }

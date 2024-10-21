@@ -13,8 +13,12 @@
   overflow-y: auto;
   text-align: center;
 
-  &::-webkit-scrollbar {
-    display: none;
+  &.mobile {
+    width: 70vw;
+  }
+
+  &.hidden {
+    width: 0vw;
   }
 
   li {
@@ -23,8 +27,12 @@
     }
   }
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   @include bpMax($mobile) {
-    width: 34vw;
+    width: 0vw;
   }
 }
 

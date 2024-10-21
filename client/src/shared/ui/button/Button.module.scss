@@ -4,20 +4,21 @@
 .button {
   border: $dark 1px solid;
   box-shadow: $dark 0px 1px 10px;
-  outline: none;
+  outline: transparent 2px solid;
   background-color: $primary;
   color: $gray;
   padding: 1rem 1.5rem;
   cursor: pointer;
   transition: all linear 0.3s;
   width: 100%;
+  border-radius: 10px;
 
   &:hover {
     background-color: $dark;
   }
 
   &:focus {
-    border: $gray 1px solid;
+    outline: $gray 2px solid;
   }
 
   @include bpMax($mobile) {
