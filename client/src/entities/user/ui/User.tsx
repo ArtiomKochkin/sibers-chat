@@ -1,15 +1,15 @@
-import { IoMdClose } from "react-icons/io";
 import { IoPersonCircleOutline } from "react-icons/io5";
+import { RemoveUser } from "@features/RemoveUser";
 import { IUser } from "@shared/types";
 import styles from "./User.module.scss";
 
 interface Props {
   user: IUser,
   isAdmin: boolean,
-  removeUser: (name: string) => void
+  room: string
 }
 
-export const User = ({user, isAdmin, removeUser }: Props) => {
+export const User = ({ user, isAdmin, room }: Props) => {
   
   return (
     <li className={styles.user}>
@@ -18,13 +18,11 @@ export const User = ({user, isAdmin, removeUser }: Props) => {
         <span> {user.name} </span>
       </div>
       {isAdmin && !user.isAdmin && (
-        <div 
-          className={styles.close} 
-          onClick={() => removeUser(user.name)}
-          title="Remove user"
-        >
-          <IoMdClose className={styles.remove}/>
-        </div>
+        <RemoveUser 
+          room={room}
+          user={user}
+          isAdmin={isAdmin}
+        />
       )}
     </li>
   )

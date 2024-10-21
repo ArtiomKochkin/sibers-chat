@@ -13,24 +13,10 @@
   }
 }
 
-
 .info {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
-
-.close {
-  font-size: 2rem;
-  cursor: pointer;
-  position: relative;
-}
-
-.remove {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .person {

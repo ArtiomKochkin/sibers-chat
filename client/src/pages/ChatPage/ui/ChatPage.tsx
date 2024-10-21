@@ -24,17 +24,6 @@ export const ChatPage = () => {
   const [isOpenSidebar, setIsOpenSidebar] = useState(true);
   const toggleVisibilitySidebar = () => setIsOpenSidebar(prev => !prev);
 
-  const leftRoom = () => {
-    socket.emit("leftRoom", { params });
-    navigate("/");
-  };
-
-  const removeUser = (name: string) => {
-    if (isAdmin) {
-      socket.emit("removeUser", { name, room: params.room });
-    }
-  };
-
   useLayoutEffect(() => {
     if (window.innerWidth < 768) {
       setIsOpenSidebar(false);
@@ -68,19 +57,21 @@ export const ChatPage = () => {
 
   useEffect(() => {
     socket.on("userRemoved", ({ name }) => {
+      console.log(currentUser);
+      console.log(name)
       if (currentUser && currentUser.name === name) {
         navigate("/");
       } else {
         setUsers((_users) => _users.filter(user => user.name !== name));
       }
     });
-  }, []);
+  }, [currentUser]);
 
   return (
     <div>
       <Header 
         name={params.name} 
-        leftRoom={leftRoom}
+        params={params}
         toggleVisibility={toggleVisibilitySidebar}
       />
       <ChatWindow 
@@ -93,7 +84,6 @@ export const ChatPage = () => {
         users={users} 
         isAdmin={isAdmin} 
         isOpen={isOpenSidebar}
-        removeUser={removeUser}
       />
     </div>
   );

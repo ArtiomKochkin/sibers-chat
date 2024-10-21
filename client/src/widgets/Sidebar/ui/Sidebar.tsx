@@ -9,10 +9,9 @@ interface Props {
   users: IUser[],
   isAdmin: boolean,
   isOpen: boolean,
-  removeUser: (name: string) => void
 }
 
-export const Sidebar = ({ room, users, isAdmin, isOpen, removeUser }: Props) => {
+export const Sidebar = ({ room, users, isAdmin, isOpen }: Props) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const isMobile = window.innerWidth < 768;
 
@@ -29,7 +28,12 @@ export const Sidebar = ({ room, users, isAdmin, isOpen, removeUser }: Props) => 
       <h3 className={styles.subtitle}> Users ({users.length}) </h3>
       <ul>
         {filteredUsers.map((user, i) => (
-          <User key={i} user={user} isAdmin={isAdmin} removeUser={removeUser}/>
+          <User 
+            key={i} 
+            user={user} 
+            isAdmin={isAdmin}
+            room={room}
+          />
         ))}
       </ul>
     </div>

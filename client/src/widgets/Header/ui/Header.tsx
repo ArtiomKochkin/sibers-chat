@@ -1,15 +1,16 @@
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { IoMdMenu } from "react-icons/io";
-import { Button } from "@shared/ui";
+import { LeftRoom } from "@features/LeftRoom";
+import { IParams } from "@shared/types";
 import styles from "./Header.module.scss";
 
 interface Props {
   name: string,
+  params: IParams
   toggleVisibility: () => void
-  leftRoom: () => void
 }
 
-export const Header = ({ name, toggleVisibility, leftRoom }: Props) => {
+export const Header = ({ name, params, toggleVisibility }: Props) => {
 
   return (
     <header className={styles.header}>
@@ -20,19 +21,14 @@ export const Header = ({ name, toggleVisibility, leftRoom }: Props) => {
         >
           <IoMdMenu />
         </button>
-        <div 
-          className={styles.logo} 
-          onClick={leftRoom}
-        >
+        <div className={styles.logo}>
           Online Chat
         </div>
       </div>
       <div className={styles.right}>
         <IoPersonCircleOutline className={styles.person}/>
         <div>{name}</div>
-        <Button onClick={leftRoom}>
-          Left the room
-        </Button>
+        <LeftRoom params={params}/>
       </div>
     </header>
   )

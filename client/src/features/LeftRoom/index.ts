@@ -1,0 +1,1 @@
+export { LeftRoom } from "./ui/LeftRoom";
