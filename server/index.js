@@ -1,124 +1,16 @@
 const express = require("express");
 const http = require("http");
-const { Server } = require("socket.io");
 const cors = require("cors");
 const app = express();
 
-const route = require("./route");
-const { addUser, findUser, getRoomUsers, removeUser, getAdmin } = require("./users");
+const route = require("./src/route");
+const { initSocket } = require("./src/io");
 
 app.use(cors({ origin: "*" }));
 app.use(route);
 
 const server = http.createServer(app);
-
-const io = new Server(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-  },
-});
-
-io.on("connection", (socket) => {
-  // Event listener for user joining a room
-  socket.on("join", ({ name, room }) => {
-    socket.join(room);
-
-    const { user, isExist, isAdmin } = addUser({ name, room });
-
-    if (isAdmin) {
-      socket.emit("currentUser", { user: { ...user, isAdmin: true } });
-    } else {
-      socket.emit("currentUser", { user });
-    }
-
-    const userMessage = isExist ? `You have joined the chat again` : `You have joined the chat`;
-
-    socket.emit("message", {
-      data: { 
-        user: { name: "Bot" }, 
-        message: userMessage
-      },
-    });
-
-    socket.broadcast.to(user.room).emit("message", {
-      data: { 
-        user: { name: "Bot" }, 
-        message: `${user.name} has joined` 
-      },
-    });
-
-    io.to(user.room).emit("room", {
-      data: { 
-        users: getRoomUsers(user.room), 
-        admin: getAdmin(user.room) 
-      },
-    });
-  });
-
-  // Event listener for sending a message
-  socket.on("sendMessage", ({ message, params }) => {
-    const user = findUser(params);
-
-    if (user) {
-      io.to(user.room).emit("message", { 
-        data: { user, message } 
-      });
-    }
-  });
-
-  // Event listener for removing a user
-  socket.on("removeUser", ({ name, room }) => {
-    const admin = getAdmin(room);
-    const user = removeUser({ name, room });
-
-    if (user && admin) {
-      io.to(room).emit("message", {
-        data: { 
-          user: { name: "Bot" }, 
-          message: `${name} has been removed by admin` 
-        },
-      });
-
-      io.to(room).emit("room", {
-        data: { 
-          users: getRoomUsers(room),
-          admin 
-        },
-      });
-
-      io.to(room).emit("userRemoved", { name });
-    }
-  });
-
-  // Event listener for user leaving the room
-  socket.on("leftRoom", ({ params }) => {
-    const user = removeUser(params);
-
-    if (user) {
-      const { room, name } = user;
-
-      io.to(room).emit("message", {
-        data: { 
-          user: { name: "Bot" }, 
-          message: `${name} has left` 
-        },
-      });
-
-      io.to(room).emit("room", {
-        data: { 
-          users: getRoomUsers(room), 
-          admin: getAdmin(room) 
-        },
-      });
-    }
-  });
-
-  // Event listener for disconnecting
-  io.on("disconnect", () => {
-    console.log("Disconnect");
-  });
-});
+initSocket(server);
 
 server.listen(3000, () => {
   console.log("Server is running");
