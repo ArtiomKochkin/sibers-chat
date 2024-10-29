@@ -1,1 +1,1 @@
-export { getNowDate } from "./getNowDate";
+export { getNowDate } from "./getNowDate/getNowDate";
