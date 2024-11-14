@@ -1,5 +1,5 @@
-@import "@styles/vars";
-@import "@styles/mixins";
+@use "@styles/vars";
+@use "@styles/mixins";
 
 .homepage {
   display: flex;
@@ -10,14 +10,15 @@
   padding: 2rem;
   border-radius: 10px;
   flex-direction: column;
-  box-shadow: $dark 0px 1px 10px;
-  border: $dark 1px solid;
+  box-shadow:vars.$dark 0px 1px 10px;
+  border:vars.$dark 1px solid;
+  background-color: vars.$primary;
 
-  @include bpMax($tablet) {
+  @include mixins.bpMax(vars.$tablet) {
     width: 80%;
   }
 
-  @include bpMax($tablet-pt) {
+  @include mixins.bpMax(vars.$tablet-pt) {
     width: 95%;
   }
 }
@@ -25,12 +26,13 @@
 .title {
   font-size: 2rem;
   margin-bottom: 2rem;
-  text-shadow: $white 1px 1px 10px;
+  text-shadow:vars.$white 1px 1px 10px;
+  color:vars.$white;
 }
 
 .subtitle {
   font-size: 1.4rem;
   margin-bottom: 1rem;
-  color: $gray;
+  color:vars.$gray;
   text-align: center;
 }

@@ -1,25 +1,24 @@
-import { useEffect, useState } from "react";
-import { getNowDate } from "@shared/lib/utils";
 import styles from "./Message.module.scss";
 
 interface Props {
   message: string,
   name: string,
-  styleMessage: string
+  styleMessage: string,
+  time: string
 }
 
-export const Message = ({ message, styleMessage, name }: Props) => {
-  const [date, setDate] = useState("");
-
-  useEffect(() => {
-    setDate(getNowDate());
-  }, [])
+export const Message = ({ message, styleMessage, name, time }: Props) => {
 
   return (
     <div className={`${styles.message} ${styleMessage}`}>
       <span className={styles.name}>{name}</span>
       <p>{message}</p>
-      <div className={styles.date}>{date}</div>
+      <div
+        data-loki-test="ignore"
+        className={styles.date}
+      >
+        {time}
+      </div>
     </div>
   )
 }

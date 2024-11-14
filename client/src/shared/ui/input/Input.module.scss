@@ -1,11 +1,11 @@
-@import "@styles/vars";
+@use "@styles/vars";
 
 .input {
-  border: $dark 1px solid;
-  box-shadow: $dark 0px 1px 10px;
+  border:vars.$dark 1px solid;
+  box-shadow:vars.$dark 0px 1px 10px;
   outline: transparent 2px solid;
-  background-color: $primary;
-  color: $gray;
+  background-color: vars.$primary;
+  color:vars.$gray;
   padding: 1rem 1.5rem;
   transition: all linear 0.3s;
   position: relative;
@@ -18,14 +18,14 @@
   }
 
   &:hover {
-    background-color: $dark;
+    background-color:vars.$dark;
   }
 
   &:focus {
-    outline: $gray 2px solid;
+    outline:vars.$gray 2px solid;
   }
 
   &::placeholder {
-    color: $gray;
+    color:vars.$gray;
   }
 }

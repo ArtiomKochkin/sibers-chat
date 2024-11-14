@@ -1,8 +1,9 @@
 const { Server } = require("socket.io");
 
 const { addUser, findUser, getRoomUsers, removeUser, getAdmin, users } = require('./users');
+const { getNowDate } = require("./utils");
 
-function initSocket() {
+function initSocket(server) {
   const io = new Server(server, {
     cors: {
       origin: "*",
@@ -24,18 +25,21 @@ function initSocket() {
       }
   
       const userMessage = isExist ? `You have joined the chat again` : `You have joined the chat`;
+      const time = getNowDate();
   
       socket.emit("message", {
         data: { 
           user: { name: "Bot" }, 
-          message: userMessage
+          message: userMessage,
+          time: time
         },
       });
   
       socket.broadcast.to(user.room).emit("message", {
         data: { 
           user: { name: "Bot" }, 
-          message: `${user.name} has joined` 
+          message: `${user.name} has joined`,
+          time: time
         },
       });
   
@@ -50,10 +54,11 @@ function initSocket() {
     // Event listener for sending a message
     socket.on("sendMessage", ({ message, params }) => {
       const user = findUser(users, params);
+      const time = getNowDate();
   
       if (user) {
         io.to(user.room).emit("message", { 
-          data: { user, message } 
+          data: { user, message, time } 
         });
       }
     });
@@ -62,12 +67,14 @@ function initSocket() {
     socket.on("removeUser", ({ name, room }) => {
       const admin = getAdmin(users, room);
       const user = removeUser(users, { name, room });
+      const time = getNowDate();
   
       if (user && admin) {
         io.to(room).emit("message", {
           data: { 
             user: { name: "Bot" }, 
-            message: `${name} has been removed by admin` 
+            message: `${name} has been removed by admin`,
+            time: time
           },
         });
   
@@ -88,11 +95,13 @@ function initSocket() {
   
       if (user) {
         const { room, name } = user;
+        const time = getNowDate();
   
         io.to(room).emit("message", {
           data: { 
             user: { name: "Bot" }, 
-            message: `${name} has left` 
+            message: `${name} has left`,
+            time: time
           },
         });
   

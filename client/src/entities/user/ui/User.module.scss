@@ -1,5 +1,5 @@
-@import "@styles/vars";
-@import "@styles/mixins";
+@use "@styles/vars";
+@use "@styles/mixins";
 
 .user {
   display: flex;
@@ -7,8 +7,10 @@
   justify-content: space-between;
   font-size: 1.4rem;
   margin: 0.5rem;
+  background-color:vars.$secondary;
+  color:vars.$white;
 
-  @include bpMax($mobile) {
+  @include mixins.bpMax(vars.$mobile) {
     padding-left: 0;
   }
 }

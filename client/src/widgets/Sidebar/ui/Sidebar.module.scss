@@ -1,5 +1,5 @@
-@import "@styles/vars";
-@import "@styles/mixins";
+@use "@styles/vars";
+@use "@styles/mixins";
 
 .sidebar {
   position: fixed;
@@ -8,8 +8,8 @@
   z-index: 100;
   height: 90vh;
   width: 25vw;
-  background-color: $secondary;
-  box-shadow: $dark 0px 1px 10px;
+  background-color:vars.$secondary;
+  box-shadow:vars.$dark 0px 1px 10px;
   overflow-y: auto;
   text-align: center;
 
@@ -31,7 +31,7 @@
     display: none;
   }
 
-  @include bpMax($mobile) {
+  @include mixins.bpMax(vars.$mobile) {
     width: 0vw;
   }
 }

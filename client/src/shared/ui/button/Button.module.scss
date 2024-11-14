@@ -1,27 +1,27 @@
-@import "@styles/vars";
-@import "@styles/mixins";
+@use "@styles/vars";
+@use "@styles/mixins";
 
 .button {
-  border: $dark 1px solid;
-  box-shadow: $dark 0px 1px 10px;
+  border:vars.$dark 1px solid;
+  box-shadow:vars.$dark 0px 1px 10px;
   outline: transparent 2px solid;
-  background-color: $primary;
-  color: $gray;
-  padding: 1rem 1.5rem;
+  background-color: vars.$primary;
+  color:vars.$gray;
+  padding: 1rem 2.5rem;
   cursor: pointer;
   transition: all linear 0.3s;
   width: 100%;
   border-radius: 10px;
 
   &:hover {
-    background-color: $dark;
+    background-color:vars.$dark;
   }
 
   &:focus {
-    outline: $gray 2px solid;
+    outline:vars.$gray 2px solid;
   }
 
-  @include bpMax($mobile) {
+  @include mixins.bpMax(vars.$mobile) {
     padding: 0.5rem;
   }
 }

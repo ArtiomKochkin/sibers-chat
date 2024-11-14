@@ -16,9 +16,7 @@ export const LeftRoom = ({ params }: Props) => {
   };
 
   return (
-    <Button 
-      onClick={leftRoom}
-    >
+    <Button onClick={leftRoom}>
       Left the room
     </Button>
   )

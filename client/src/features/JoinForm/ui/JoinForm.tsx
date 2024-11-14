@@ -48,8 +48,10 @@ export const JoinForm = () => {
         onClick={handleClick}
         to={`/chat?name=${values[NAME]}&room=${values[ROOM]}`}
       >
-        <Button type="submit">Join</Button>
+        <Button type="submit">
+          Join
+        </Button>
       </Link>
-  </form>
+    </form>
   )
 }

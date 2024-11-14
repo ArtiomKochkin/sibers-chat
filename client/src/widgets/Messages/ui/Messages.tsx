@@ -13,15 +13,17 @@ export const Messages = ({ messages, name, innerRef }: Props) => {
   
   return (
     <div className={styles.messages} ref={innerRef}>
-      {messages.map(({ user, message }, i) => {
+      {messages.map(({ user, message, time }, i) => {
         const itsMe = user.name.trim().toLowerCase() === name.trim().toLowerCase();
         const className = itsMe ? styles.me : "";
+
         return (
           <Message 
             key={i} 
             message={message} 
             styleMessage={className}
             name={user.name}
+            time={time}
           />
         );
       })}

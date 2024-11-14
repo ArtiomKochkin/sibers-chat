@@ -57,8 +57,6 @@ export const ChatPage = () => {
 
   useEffect(() => {
     socket.on("userRemoved", ({ name }) => {
-      console.log(currentUser);
-      console.log(name)
       if (currentUser && currentUser.name === name) {
         navigate("/");
       } else {

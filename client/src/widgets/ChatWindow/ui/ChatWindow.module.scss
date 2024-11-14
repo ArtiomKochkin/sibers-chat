@@ -1,5 +1,5 @@
-@import "@styles/vars";
-@import "@styles/mixins";
+@use "@styles/vars";
+@use "@styles/mixins";
 
 .chat {
   position: relative;
@@ -16,7 +16,7 @@
     width: 100vw;
   }
 
-  @include bpMax($mobile) {
+  @include mixins.bpMax(vars.$mobile) {
     left: 34vw;
     width: 65vw;
   }
@@ -24,21 +24,22 @@
 
 .form {
   margin: auto 0 0 0;
-  position: fixed;
-  bottom: 0;
-  right: 0;
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
   width: 73vw;
   display: grid;
   padding: 1rem;
+  padding-left: 2rem;
   grid-template-columns: 4fr 1fr;
   gap: 1rem;
+  background-color: vars.$primary;
 
   &.full {
-    left: 0;
     width: 100vw;
   }
 
-  @include bpMax($mobile) {
+  @include mixins.bpMax(vars.$mobile) {
     width: 62vw;
   }
 }

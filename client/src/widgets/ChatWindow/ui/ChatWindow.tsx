@@ -36,7 +36,7 @@ export const ChatWindow = ({ params, isOpenSidebar, state}: Props) => {
   return (
     <div
       className={`${styles.chat} ${((!isOpenSidebar && !isMobile) || isMobile) && styles.full}`}
-    >
+    >  
       <Messages 
         messages={state} 
         name={params.name}

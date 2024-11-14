@@ -10,6 +10,7 @@ export const Input = ({ isRect, ...props }: Props) => {
   return (
     <input
       className={`${styles.input} ${isRect && styles.rect}`}
+      data-testid="input"
       {...props}
     />
   )
