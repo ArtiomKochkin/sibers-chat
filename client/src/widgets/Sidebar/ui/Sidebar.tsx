@@ -20,7 +20,7 @@ export const Sidebar = ({ room, users, isAdmin, isOpen }: Props) => {
   );
 
   return (
-    <div 
+    <aside 
       className={`${styles.sidebar} ${isOpen && isMobile && styles.mobile} ${!isOpen && styles.hidden}`}
     >
       <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
@@ -36,6 +36,6 @@ export const Sidebar = ({ room, users, isAdmin, isOpen }: Props) => {
           />
         ))}
       </ul>
-    </div>
+    </aside>
   );
 };

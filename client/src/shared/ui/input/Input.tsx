@@ -2,7 +2,8 @@ import { InputHTMLAttributes } from "react";
 import styles from "./Input.module.scss";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  isRect?: boolean
+  isRect?: boolean,
+  innerRef?: React.RefObject<HTMLInputElement>
 }
 
 export const Input = ({ isRect, ...props }: Props) => {

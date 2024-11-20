@@ -26,4 +26,9 @@ export default defineConfig({
       '@styles': path.resolve(__dirname, 'src/app/styles'),
     },
   },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './jest.setup.ts',
+  },
 })

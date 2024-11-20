@@ -6,7 +6,14 @@
 		"module": "ESNext",
 		"skipLibCheck": true,
 		"esModuleInterop": true,
-		"types": ["vite/client", "jest", "@storybook/react", "@storybook/addon-actions"],
+		"types": [
+			"vite/client", 
+			"jest", 
+			"node",
+			"@storybook/react", 
+			"@storybook/addon-actions", 
+			"@testing-library/jest-dom"
+		],
 
 		/* Bundler mode */
 		"moduleResolution": "bundler",

@@ -18,6 +18,7 @@ export const Header = ({ name, params, toggleVisibility }: Props) => {
         <button 
           className={styles.menu}
           onClick={() => toggleVisibility()}
+          data-testid="toggle-sidebar"
         >
           <IoMdMenu />
         </button>

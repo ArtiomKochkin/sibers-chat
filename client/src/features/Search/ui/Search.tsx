@@ -16,6 +16,7 @@ export const Search = ({ searchQuery, setSearchQuery }: Props) => {
       isRect={true}
       value={searchQuery}
       onChange={handleSearchChange}
+      role="search"
     />
   )
 }

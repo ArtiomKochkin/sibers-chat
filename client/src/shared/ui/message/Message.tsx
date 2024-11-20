@@ -10,7 +10,10 @@ interface Props {
 export const Message = ({ message, styleMessage, name, time }: Props) => {
 
   return (
-    <div className={`${styles.message} ${styleMessage}`}>
+    <div 
+      className={`${styles.message} ${styleMessage}`} 
+      role="listitem"
+    >
       <span className={styles.name}>{name}</span>
       <p>{message}</p>
       <div

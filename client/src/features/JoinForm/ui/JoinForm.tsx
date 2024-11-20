@@ -27,7 +27,10 @@ export const JoinForm = () => {
   };
 
   return (
-    <form className={styles.form}>
+    <form 
+      className={styles.form}
+      role='form'
+    >
       <Input
         name="name"
         placeholder="Name"

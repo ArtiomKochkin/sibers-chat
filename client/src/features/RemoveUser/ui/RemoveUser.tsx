@@ -22,6 +22,7 @@ export const RemoveUser = ({ user, isAdmin, room }: Props) => {
       className={styles.close} 
       onClick={() => removeUser(user.name)}
       title="Remove user"
+      role="application"
     >
       <IoMdClose className={styles.remove}/>
     </div>

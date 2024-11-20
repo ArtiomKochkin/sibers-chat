@@ -12,7 +12,7 @@ interface Props {
 export const Messages = ({ messages, name, innerRef }: Props) => {
   
   return (
-    <div className={styles.messages} ref={innerRef}>
+    <div className={styles.messages} ref={innerRef} role="list">
       {messages.map(({ user, message, time }, i) => {
         const itsMe = user.name.trim().toLowerCase() === name.trim().toLowerCase();
         const className = itsMe ? styles.me : "";

@@ -1,6 +1,6 @@
-import { Spinner } from "@shared/ui";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Spinner } from "@shared/ui";
 
 const HomePage = lazy(() =>
   import('@pages/HomePage').then(module => ({ default: module.HomePage }))

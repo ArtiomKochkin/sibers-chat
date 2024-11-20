@@ -14,6 +14,7 @@ interface Props {
 export const ChatWindow = ({ params, isOpenSidebar, state}: Props) => {
   const [message, setMessage] = useState("");
   const messagesRef = useRef<HTMLDivElement | null>(null); 
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const isMobile = window.innerWidth < 768;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,10 +32,15 @@ export const ChatWindow = ({ params, isOpenSidebar, state}: Props) => {
     if (messagesRef.current) {
       messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
     }
+
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
   return (
     <div
+      role="region"
       className={`${styles.chat} ${((!isOpenSidebar && !isMobile) || isMobile) && styles.full}`}
     >  
       <Messages 
@@ -44,6 +50,7 @@ export const ChatWindow = ({ params, isOpenSidebar, state}: Props) => {
       />
       <form 
         className={`${styles.form} ${!isOpenSidebar && styles.full}`} 
+        role="form"
         onSubmit={handleSubmit}
       >
         <Input 
@@ -54,6 +61,7 @@ export const ChatWindow = ({ params, isOpenSidebar, state}: Props) => {
           autoComplete="off"
           required
           autoFocus={true}
+          innerRef={inputRef}
         />
         <Button type="submit">
           Send
