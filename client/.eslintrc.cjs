@@ -4,7 +4,8 @@ module.exports = {
     browser: true,
     es2020: true,
     node: true,
-    "jest/globals": true 
+    "jest/globals": true,
+    "cypress/globals": true,
   },
   extends: [
     "eslint:recommended",
@@ -14,13 +15,14 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:jest/recommended",
     "plugin:testing-library/react",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
+    "plugin:cypress/recommended"
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh', 'jest', 'testing-library'],
+  plugins: ['react-refresh', 'jest', 'testing-library', 'cypress'],
   rules: {
     'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': [

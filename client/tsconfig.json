@@ -12,7 +12,8 @@
 			"node",
 			"@storybook/react", 
 			"@storybook/addon-actions", 
-			"@testing-library/jest-dom"
+			"@testing-library/jest-dom",
+			"cypress"
 		],
 
 		/* Bundler mode */
@@ -38,6 +39,10 @@
 			"@pages/*": ["src/pages/*"]
 		}
 	},
-	"include": ["src", "app/types/vite-env.d.ts"],
+	"include": [
+		"src", 
+		"app/types/vite-env.d.ts",
+		"cypress/**/*.ts"
+	],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }

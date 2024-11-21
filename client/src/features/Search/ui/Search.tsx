@@ -17,6 +17,7 @@ export const Search = ({ searchQuery, setSearchQuery }: Props) => {
       value={searchQuery}
       onChange={handleSearchChange}
       role="search"
+      type="search"
     />
   )
 }
